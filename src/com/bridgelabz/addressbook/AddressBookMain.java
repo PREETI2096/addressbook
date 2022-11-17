@@ -7,9 +7,10 @@ public class AddressBookMain {
 	public static void main(String[] args) {
 		System.out.println("Welcome to address book system program....");
 		AddressBook addressBook = new AddressBook();
+	//	AddressBookHandler adBook = new AddressBookHandler();
 		Scanner sc = new Scanner(System.in);
 		
-			System.out.println("0.Exit \n1.Add Contact \n2.multiple contact \n3.Display Contact \n4.Edit \n5.delete ");
+			System.out.println("0.Exit \n1.Add Contact \n2.Add address book \n3.Display Contact \n4.Edit \n5.delete ");
 			System.out.println("Enter the Operation Number : ");
 			int operationNumber = sc.nextInt();
             do {
@@ -22,19 +23,17 @@ public class AddressBookMain {
 				addressBook.addContact();
 				break;		
 			case 2:
-				addressBook.multipleContact();
+				addressBook.addAddressBook();
 				break;
 			case 3:
 				addressBook.displayContact();
-				break;
-				
+				break;	
 			case 4:
 				addressBook.editContact();
 				break;
 			case 5:
-			addressBook.deleteContact();
+				addressBook.deleteContact();
 			break;
-			
 			default:
 				System.out.println("Invalid Input");
 			}
