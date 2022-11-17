@@ -9,7 +9,7 @@ public class AddressBookMain {
 		AddressBook addressBook = new AddressBook();
 		Scanner sc = new Scanner(System.in);
 		
-			System.out.println("0.Exit \n1.Add Contact \n2.Display Contact \n3.Edit ");
+			System.out.println("0.Exit \n1.Add Contact \n2.Display Contact \n3.Edit \n4.delete ");
 			System.out.println("Enter the Operation Number : ");
 			int operationNumber = sc.nextInt();
             do {
@@ -27,10 +27,13 @@ public class AddressBookMain {
 			case 3:
 				addressBook.editContact();
 				break;
+			case 4:
+				addressBook.deleteContact();
+				break;
 			default:
 				System.out.println("Invalid Input");
 			}
-		}while(operationNumber >3);
+		}while(operationNumber != 4);
 	}
 
 }
