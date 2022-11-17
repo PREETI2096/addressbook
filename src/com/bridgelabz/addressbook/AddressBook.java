@@ -1,30 +1,33 @@
 package com.bridgelabz.addressbook;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class AddressBook {
 	Scanner sc = new Scanner(System.in);
-	ArrayList<Contact> contactArrayList = new ArrayList<Contact>();
-	Contact contact = new Contact();
+	static ArrayList<Contact> contactArrayList = new ArrayList<Contact>();
+	static ArrayList<AddressBookData> addressList = new  ArrayList<AddressBookData>();
+	static HashMap <String, ArrayList<Contact>> hashmap = new HashMap<String,ArrayList<Contact>>();
+	boolean result;
 	public void addContact() {
-		System.out.println("Enter the First Name : ");
-		contact.setFirstName(sc.next());
-		System.out.println("Enter the Last Name : ");
-		contact.setLastName(sc.next());
-		System.out.println("Enter the Address: ");
-		contact.setAddress(sc.next());
-		System.out.println("Enter the City : ");
-		contact.setCity( sc.next());
-		System.out.println("Enter the State : ");
-		contact.setState(sc.next());
-		System.out.println("Enter the Zip code : ");
-		contact.setZipCode(sc.nextInt());
-		System.out.println("Enter the Mobile Number : ");
-		contact.setMobileNo(sc.nextLong());
-		System.out.println("Enter the Email ID : ");
-		contact.setEmailID(sc.next());
-		contactArrayList.add(contact);
-		displayContact();       
+		System.out.println("Enter first name : ");
+		String firstName = sc.next();
+		System.out.println("Enter last name : ");
+		String lastName = sc.next();
+		System.out.println("Enter address : ");
+		String address = sc.next();
+		System.out.println("Enter city: ");
+		String city = sc.next();
+		System.out.println("Enter state: ");
+		String state = sc.next();
+		System.out.println("Enter zip : ");
+		int zipcode = sc.nextInt();
+		System.out.println("Enter contact number : ");
+		long mobileNo = sc.nextLong();
+		System.out.println("Enter email id : ");
+		String emailID = sc.next();
+		contactArrayList.add(new Contact(firstName, lastName, address, city, state, zipcode, mobileNo, emailID));
+	    return ;
 	}
 	public void displayContact() {
 			System.out.println(contactArrayList);
@@ -117,6 +120,31 @@ public class AddressBook {
 		for (int i = 0; i < n; i++) {
 			addContact();
 		}
-		return ;
 	}
+	 public void addAddressBook() {
+	        System.out.println("Enter id : ");
+	        int id = sc.nextInt();
+	        System.out.println("Enter name : ");
+	        String bookName = sc.next();
+	        AddressBookData book = new AddressBookData(id, bookName);
+
+	        if (addressList.isEmpty()) {
+	            addressList.add(book);
+	           hashmap.put(bookName, contactArrayList);
+	            System.out.println("New record added  : ");
+	        } else {
+	            for (int i = 0; i < addressList.size(); i++) {
+	                if (addressList.get(i).getBookName().equals(bookName)) {
+	                    result = addressList.get(i).getBookName().equals(bookName);
+	                    System.out.println("Record is already exists : ");
+	                    break;
+	                }
+	            }
+	            if (!result) {
+	                addressList.add(book);
+	                hashmap.put(bookName, contactArrayList);
+	                System.out.println("Record added successfully : ");
+	            }
+	        }
+}
 }

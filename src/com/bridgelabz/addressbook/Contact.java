@@ -9,6 +9,21 @@ public class Contact {
 	private int zipCode;
 	private long mobileNo;
 	private String emailID;
+	
+	public Contact() {}
+	
+	public Contact(String firstName, String lastName, String address, String city, String state, int zipCode,
+			long mobileNo, String emailID) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.address = address;
+		this.city = city;
+		this.state = state;
+		this.zipCode = zipCode;
+		this.mobileNo = mobileNo;
+		this.emailID = emailID;
+	}
 	public String getFirstName() {
 		return firstName;
 	}
